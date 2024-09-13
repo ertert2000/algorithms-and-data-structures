@@ -1,6 +1,10 @@
 #include <iostream>
 
-
+typedef struct Cat
+{
+    char value;
+    struct Cat* next;
+}Cat;
 int main()
 {
     int sizeOutputArr = 4;
@@ -27,6 +31,10 @@ int main()
     std::cout << "\nPlease, enter D\n";
     for (int i = 0; i < 4; i++)
         std::cin >> D[i];
+
+
+
+    //!!!!!!!!!!!!!!!!!!!!!! but 
 
 
     for (int i = 0; i < 4; i++)
