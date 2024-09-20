@@ -1,6 +1,14 @@
 #include <iostream>
 #include <cstring>
 
+
+// представить как массив (1). 
+// список(0.5),(Алексей)
+// массив бит(Алиса),
+// машинное слово,(Алексей)
+// добавить генератор(Алиса),
+// измерения времени.(Алексей)
+
 typedef struct Cat
 {
     char value;
@@ -9,6 +17,8 @@ typedef struct Cat
 
 void processInput(Cat* structA, Cat* structB, Cat* structC, Cat* structD, Cat* structE, int& sizeOutputArr) {
     
+
+    Cat* temp = structE;
     for (int i = 0; i < 4; i++)
     {
         structE->value = structA->value;
@@ -16,9 +26,60 @@ void processInput(Cat* structA, Cat* structB, Cat* structC, Cat* structD, Cat* s
         structE = structE->next;
         structA = structA->next;
     }
+
+    structE = temp;
+
+    Cat* tmp = structE;
+    while (tmp->value != '\0')
+    {
+        tmp = tmp->next;
+    }
+
+    //std::cout << structE->value;
+    Cat* tempB = NULL;
+    Cat* tempC = NULL;
+    bool flag;
+    for (int i = 0; i < 4; i++) {
+        flag = true;
+        tempB = structB;
+        tempC = structC;
+        for (int j = 0; j < 4; j++) {
+            if (structB->value == structE->value || structC->value == structE->value)
+                flag = false;
+            structB = structB->next;
+            structC = structC->next;
+        }
+        structB = tempB; 
+        structC = tempC;
+        tempB = structB;
+        while (structB->next != NULL)
+        {
+            tempC = structC;
+            for (int j = 0; j < 4; j++)
+            {
+                if (structB->value == structC->value && flag)
+                {
+                    tmp->value = structB->value;
+                    tmp = tmp->next;
+                }
+                structC = structC->next;
+            }
+            structB = structB->next;
+            structC = tempC;
+        }
+        structB = tempB;
+        //for (int j = 0; j < 4; j++) {
+        //    if (B[i] == C[j] && flag) {
+        //        E[sizeOutputArr] = B[i];
+        //        sizeOutputArr++;
+        //    }
+        //}
+        structE = structE->next;
+    }
     
-    
-    
+
+
+    puts("");
     //memset(E, '\0', 11);
 
     //sizeOutputArr = 4;
