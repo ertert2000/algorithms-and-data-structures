@@ -1,147 +1,13 @@
-#include <iostream>
-#include <cstring>
+#include "List.h"
+#include "Array.h"
 
 
-// представить как массив (1). 
-// список(0.5),(Алексей)
-// массив бит(Алиса),
-// машинное слово,(Алексей)
-// добавить генератор(Алиса),
-// измерения времени.(Алексей)
-
-typedef struct Cat
-{
-    char value;
-    struct Cat* next;
-}Cat;
-
-void processInput(Cat* structA, Cat* structB, Cat* structC, Cat* structD, Cat* structE, int& sizeOutputArr) {
-    
-
-    Cat* temp = structE;
-    for (int i = 0; i < 4; i++)
-    {
-        structE->value = structA->value;
-
-        structE = structE->next;
-        structA = structA->next;
-    }
-
-    structE = temp;
-
-    Cat* tmp = structE;
-    while (tmp->value != '\0')
-    {
-        tmp = tmp->next;
-    }
-
-    //std::cout << structE->value;
-    Cat* tempB = NULL;
-    Cat* tempC = NULL;
-    bool flag;
-    for (int i = 0; i < 4; i++) {
-        flag = true;
-        tempB = structB;
-        tempC = structC;
-        for (int j = 0; j < 4; j++) {
-            if (structB->value == structE->value || structC->value == structE->value)
-                flag = false;
-            structB = structB->next;
-            structC = structC->next;
-        }
-        structB = tempB; 
-        structC = tempC;
-        tempB = structB;
-        while (structB->next != NULL)
-        {
-            tempC = structC;
-            for (int j = 0; j < 4; j++)
-            {
-                if (structB->value == structC->value && flag)
-                {
-                    tmp->value = structB->value;
-                    tmp = tmp->next;
-                }
-                structC = structC->next;
-            }
-            structB = structB->next;
-            structC = tempC;
-        }
-        structB = tempB;
-        //for (int j = 0; j < 4; j++) {
-        //    if (B[i] == C[j] && flag) {
-        //        E[sizeOutputArr] = B[i];
-        //        sizeOutputArr++;
-        //    }
-        //}
-        structE = structE->next;
-    }
-    
-
-
-    puts("");
-    //memset(E, '\0', 11);
-
-    //sizeOutputArr = 4;
-
-    //for (int i = 0; i < 4; i++)
-    //    E[i] = A[i];
-    //bool flag = true;
-    //for (int i = 0; i < 4; i++) {
-    //    flag = true;
-    //    for (int j = 0; j < 4; j++) {
-    //        if (B[j] == E[i] || C[j] == E[i])
-    //            flag = false;
-    //    }
-    //    for (int j = 0; j < 4; j++) {
-    //        if (B[i] == C[j] && B[j] != E[i] && flag) {
-    //            E[sizeOutputArr] = B[i];
-    //            sizeOutputArr++;
-    //        }
-    //    }
-    //}
-
-    ////for (int i = 0, j = sizeOutputArr; i != j; i++, j--)
-    //flag = true;
-    //int s = sizeOutputArr;
-    //for (int i = 0; i < 4; i++)
-    //{
-    //    flag = true;
-    //    for (int j = 0; j < s; j++) {
-    //        if (E[j] == D[i])
-    //            flag = false;
-    //    }
-    //    for (int j = i; j < s; j++)
-    //    {
-    //        if (E[j] != D[i] && flag)
-    //        {
-    //            E[sizeOutputArr] = D[i];
-    //            sizeOutputArr++;
-    //            break;
-    //        }
-    //    }
-    //}
-}
-
-Cat* init(char value) {
-    Cat* node = (Cat*)malloc(sizeof(Cat));
-    if (!(node))
-        exit(1);
-    node->value = value;
-
-    node->next = NULL;
-}
-
-void addFront(char value, Cat** Cola) {
-    Cat* temp = init(value);
-    Cat* tmp = *Cola;
-
-    while (tmp->next != NULL) 
-        tmp = tmp->next;
-
-    tmp->next = temp;
-    
-}
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (1). 
+// СЃРїРёСЃРєРё(1)
+// РјР°СЃСЃРёРІ Р±РёС‚РѕРІ(пїЅпїЅпїЅпїЅпїЅ),
+// РјР°С€РёРЅРЅРѕРµ СЃР»РѕРІРѕ,(пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅ),
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.(пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 
 int main()
 {
@@ -178,83 +44,37 @@ int main()
         if (i == 0)
             structA = init(A[i]);
         else
-            addFront(A[i], &structA);
+            addFront(structA, A[i]);
     }
 
     for (int i = 0; i < 4; i++) {
         if (i == 0)
             structB = init(B[i]);
         else
-            addFront(B[i], &structB);
+            addFront(structB, B[i]);
     }
 
     for (int i = 0; i < 4; i++) {
         if (i == 0)
             structC = init(C[i]);
         else
-            addFront(C[i], &structC);
+            addFront(structC, C[i]);
     }
 
     for (int i = 0; i < 4; i++) {
         if (i == 0)
             structD = init(D[i]);
         else
-            addFront(D[i], &structD);
+            addFront(structD, D[i]);
     }
 
-    for (int i = 0; i < 11; i++) {
-        if (i == 0)
-            structE = init('\0');
-        else
-            addFront('\0', &structE);
-    }
+    structE = init(NULL);
 
-    processInput(structA, structB, structC, structD, structE, sizeOutputArr);
-    //!!!!!!!!!!!!!!!!!!!!!! but 
+    processInput(A, B, C, D, E, sizeOutputArr);
 
+    combineLists(structE, structA, structB, structC, structD);
 
-    //for (int i = 0; i < 4; i++)
-    //    E[i] = A[i];
-    //bool flag = true;
-    //for (int i = 0; i < 4; i++) {
-    //    flag = true;
-    //    for (int j = 0; j < 4; j++) {
-    //        if (B[j] == E[i] or C[j] == E[i])
-    //            flag = false;
-    //    }
-    //    for (int j = 0; j < 4; j++) {
-    //        if (B[i] == C[j] and B[j] != E[i] and flag) {
-    //            E[sizeOutputArr] = B[i];
-    //            sizeOutputArr++;
-    //        }
-    //    }
-    //}
-
-    ////for (int i = 0, j = sizeOutputArr; i != j; i++, j--)
-    //flag = true;
-    //int s = sizeOutputArr;
-    //for (int i = 0; i < 4; i++)
-    //{
-    //    flag = true;
-    //    for (int j = 0; j < s; j++) {
-    //        if (E[j] == D[i])
-    //            flag = false;
-    //    }
-    //    for (int j = i; j < s; j++)
-    //    {
-    //        if (E[j] != D[i]  and flag)
-    //        {
-    //            E[sizeOutputArr] = D[i];
-    //            sizeOutputArr++;
-    //            break;
-    //        }
-    //    }
-    //}
-
-    for (auto i : E)
-    {
-        std::cout << i << std::endl;
-    }
+    printList(structE);
 
     return 0;
 }
