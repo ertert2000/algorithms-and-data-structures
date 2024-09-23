@@ -1,10 +1,12 @@
 #include "List.h"
 #include "Array.h"
+#include "BitArray.h"
+#include "MachineWord.h"
 
 
-// ����������� ��� ������ (1). 
+// ����������� ��� ������ (1).
 // списки(1)
-// массив битов(�����),
+// массив битов(�����), (1)
 // машинное слово,(�������)
 // �������� ���������(�����),
 // ��������� �������.(�������)
@@ -18,11 +20,17 @@ int main()
     char C[4];
     char D[4];
     char E[11];
+    char EBit[2] = { 0 };
     Cat* structA = NULL;
     Cat* structB = NULL;
     Cat* structC = NULL;
     Cat* structD = NULL;
     Cat* structE = NULL;
+
+    unsigned int wordA = setBit('1') | setBit('2') | setBit('3') | setBit('4');
+    unsigned int wordB = setBit('1') | setBit('2') | setBit('3') | setBit('4');
+    unsigned int wordC = setBit('1') | setBit('2') | setBit('3') | setBit('4');
+    unsigned int wordD = setBit('1') | setBit('2') | setBit('3') | setBit('4');
 
     std::cout << "Please, enter A\n";
     for (int i = 0; i < 4; i++)
@@ -72,9 +80,23 @@ int main()
 
     processInput(A, B, C, D, E, sizeOutputArr);
 
+    for (auto i : E)
+        std::cout << i;
+
+    std::cout << std::endl;
+
     combineLists(structE, structA, structB, structC, structD);
 
     printList(structE);
+    std::cout << std::endl;
 
+    fifthSetBitwise(A, B, C, D, 4, EBit);
+
+    printBitArray(EBit);
+    std::cout << std::endl;
+
+    unsigned int wordE = createFifthSet(wordA, wordB, wordC, wordD);
+
+    displaySet(wordE);
     return 0;
 }
