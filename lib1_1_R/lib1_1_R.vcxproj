@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Array.cpp" />
     <ClCompile Include="BitArray.cpp" />
+    <ClCompile Include="Generator.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="MachineWord.cpp" />
     <ClCompile Include="main.cpp" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Array.h" />
     <ClInclude Include="BitArray.h" />
+    <ClInclude Include="Generator.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MachineWord.h" />
   </ItemGroup>

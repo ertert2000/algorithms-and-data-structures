@@ -2,7 +2,7 @@
 #include "Array.h"
 #include "BitArray.h"
 #include "MachineWord.h"
-
+#include "Generator.h"
 
 // ����������� ��� ������ (1).
 // списки(1)
@@ -98,5 +98,8 @@ int main()
     unsigned int wordE = createFifthSet(wordA, wordB, wordC, wordD);
 
     displaySet(wordE);
+    std::cout << std::endl;
+
+    generateNumbers();
     return 0;
 }
