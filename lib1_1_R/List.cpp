@@ -1,5 +1,5 @@
 #include "List.h"
-
+#include "Globals.h"
 
 Cat* init(char value)
 {
@@ -14,8 +14,12 @@ Cat* init(char value)
 void addFront(Cat*& Cola, char value)
 {
     Cat* temp = init(value);
+    if (Cola == NULL) 
+    {
+        Cola = temp;
+        return;
+    }
     Cat* tmp = Cola;
-
     while (tmp->next != NULL)
         tmp = tmp->next;
 
@@ -39,7 +43,7 @@ bool existsInList(Cat* head, char data)
 void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D)
 {
     Cat* tempA = A;
-    while (tempA != nullptr)
+    while (tempA != nullptr) 
     {
         addFront(E, tempA->value);
         tempA = tempA->next;
@@ -48,31 +52,16 @@ void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D)
     Cat* tempB = B;
     while (tempB != nullptr)
     {
-        bool flag = true;
+        if (existsInList(C, tempB->value) && !existsInList(E, tempB->value))
+            addFront(E, tempB->value);
 
-        if (existsInList(E, tempB->value) || existsInList(C, tempB->value))
-            flag = false;
-
-        Cat* tempC = C;
-        while (tempC != nullptr)
-        {
-            if (tempB->value == tempC->value && flag)
-            {
-                addFront(E, tempB->value);
-                break;
-            }
-            tempC = tempC->next;
-        }
         tempB = tempB->next;
     }
 
     Cat* tempD = D;
     while (tempD != nullptr)
     {
-        bool flag = true;
-        if (existsInList(E, tempD->value))
-            flag = false;
-        if (flag)
+        if (!existsInList(E, tempD->value))
             addFront(E, tempD->value);
 
         tempD = tempD->next;
@@ -84,8 +73,7 @@ void printList(Cat* head)
     Cat* temp = head;
     while (temp != nullptr)
     {
-        std::cout << temp->value << " ";
+        std::cout << temp->value;
         temp = temp->next;
     }
-    std::cout << std::endl;
 }

@@ -1,55 +1,56 @@
 #include <iostream>
+#include <cstring>
+#include "Globals.h"
 
-void setBit(char* bitArray, int index)
+const int universeSize = 10;
+
+
+void createSet(const char A[], bool bitA[]) 
 {
-    bitArray[index / 8] |= (1 << (index % 8));
-}
+    for (int i = 0; i < universeSize; i++)
+        bitA[i] = false;
 
-bool isBitSet(const char* bitArray, int index)
-{
-    return bitArray[index / 8] & (1 << (index % 8));
-}
-
-void printBitArray(const char* bitArray)
-{
-    for (int i = 0; i < 11; i++)
-        if (isBitSet(bitArray, i))
-            std::cout << i << " ";
-
-    std::cout << std::endl;
-}
-
-void createBitArray(const char* arr, int size, char* bitArray)
-{
-    for (int i = 0; i < size; i++)
-        setBit(bitArray, arr[i] - '0');
-
-}
-
-void fifthSetBitwise(const char* A, const char* B, const char* C, const char* D, int size, char* E)
-{
-    char B_bit[2] = { 0 };
-    char C_bit[2] = { 0 };
-
-    createBitArray(A, size, E);
-
-    createBitArray(B, size, B_bit);
-    createBitArray(C, size, C_bit);
-
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < powerOfSet; i++)
     {
-        bool flag = true;
-        if (isBitSet(B_bit, A[i] - '0') || isBitSet(C_bit, A[i] - '0'))
-            flag = false;
-
-        for (int j = 0; j < size && flag; j++)
-            if (isBitSet(B_bit, B[i] - '0') && isBitSet(C_bit, C[j] - '0') && !isBitSet(E, B[i] - '0'))
-                setBit(E, B[i] - '0');
-
+        int index = A[i] - '0';
+        bitA[index] = true;
     }
+}
 
-    for (int i = 0; i < size; i++)
-        if (!isBitSet(E, D[i] - '0'))
-            setBit(E, D[i] - '0');
+void setUnion(const bool setA[], const bool setB[], bool result[]) 
+{
+    for (int i = 0; i < universeSize; i++)
+        result[i] = setA[i] || setB[i];
 
+}
+
+void setIntersection(const bool setA[], const bool setB[], bool result[]) 
+{
+    for (int i = 0; i < universeSize; i++)
+        result[i] = setA[i] && setB[i];
+
+}
+
+void processInputBit(const char A[], const char B[], const char C[], const char D[], char E[], int& sizeOutputArr) 
+{
+    bool bitA[universeSize], bitB[universeSize], bitC[universeSize], bitD[universeSize];
+    bool tempBC[universeSize], tempABC[universeSize];
+
+    createSet(A, bitA);
+    createSet(B, bitB);
+    createSet(C, bitC);
+    createSet(D, bitD);
+
+    setIntersection(bitB, bitC, tempBC);
+
+    setUnion(bitA, tempBC, tempABC);
+
+    setUnion(tempABC, bitD, tempABC);
+
+    sizeOutputArr = 0;
+    for (int i = 0; i < universeSize; i++)
+        if (tempABC[i])
+            E[sizeOutputArr++] = '0' + i;
+
+    E[sizeOutputArr] = '\0';
 }
