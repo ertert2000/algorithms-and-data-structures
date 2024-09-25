@@ -12,7 +12,7 @@ void processInput(const char A[4], const char B[4], const char C[4], const char 
     for (int i = 0; i < 4; i++) {
         flag = true;
         for (int j = 0; j < 4; j++) {
-            if (B[j] == E[i] || C[j] == E[i])
+            if (B[i] == E[j] || C[i] == E[j])
                 flag = false;
         }
         for (int j = 0; j < 4; j++) {

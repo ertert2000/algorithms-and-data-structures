@@ -27,10 +27,10 @@ int main()
     Cat* structD = NULL;
     Cat* structE = NULL;
 
-    unsigned int wordA = setBit('1') | setBit('2') | setBit('3') | setBit('4');
+    /*unsigned int wordA = setBit('1') | setBit('2') | setBit('3') | setBit('4');
     unsigned int wordB = setBit('1') | setBit('2') | setBit('3') | setBit('4');
     unsigned int wordC = setBit('1') | setBit('2') | setBit('3') | setBit('4');
-    unsigned int wordD = setBit('1') | setBit('2') | setBit('3') | setBit('4');
+    unsigned int wordD = setBit('1') | setBit('2') | setBit('3') | setBit('4');*/
 
     std::cout << "Please, enter A\n";
     for (int i = 0; i < 4; i++)
@@ -95,8 +95,25 @@ int main()
     printBitArray(EBit);
     std::cout << std::endl;
 
-    unsigned int wordE = createFifthSet(wordA, wordB, wordC, wordD);
+    unsigned int wordA;
+    unsigned int wordB;
+    unsigned int wordC;
+    unsigned int wordD;
+    unsigned int wordUnionAD;
+    unsigned int wordDiffABC;
+    unsigned int wordE;
 
-    displaySet(wordE);
+    createMachineWord(A, strlen(A), wordA);
+    createMachineWord(B, strlen(B), wordB);
+    createMachineWord(C, strlen(C), wordC);
+    createMachineWord(D, strlen(D), wordD);
+
+    wordE = wordA & (wordB | wordC) & wordD;
+
+    printMachineWord(wordE);
+
+    /*unsigned int wordE = createFifthSet(wordA, wordB, wordC, wordD);
+
+    displaySet(wordE);*/
     return 0;
 }
