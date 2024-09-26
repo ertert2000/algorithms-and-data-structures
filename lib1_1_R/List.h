@@ -2,16 +2,16 @@
 
 #include <iostream>
 
-typedef struct Cat
+typedef struct Set
 {
     char value;
-    struct Cat* next;
-}Cat;
+    struct Set* next;
+}Set;
 
-Cat* init(char value);
+Set* init(char value);
 
-void addFront(Cat*& Cola, char value);
+void addFront(Set*& Cola, char value);
 
-void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D);
+void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D);
 
-void printList(Cat* head);
+void printList(Set* head);

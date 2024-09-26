@@ -1,9 +1,11 @@
 #include "List.h"
 #include "Globals.h"
 
-Cat* init(char value)
+
+//new
+Set* init(char value)
 {
-    Cat* node = (Cat*)malloc(sizeof(Cat));
+    Set* node = (Set*)malloc(sizeof(Set));
     if (!(node))
         exit(1);
     node->value = value;
@@ -11,15 +13,15 @@ Cat* init(char value)
     node->next = NULL;
 }
 
-void addFront(Cat*& Cola, char value)
+void addFront(Set*& Cola, char value)
 {
-    Cat* temp = init(value);
+    Set* temp = init(value);
     if (Cola == NULL) 
     {
         Cola = temp;
         return;
     }
-    Cat* tmp = Cola;
+    Set* tmp = Cola;
     while (tmp->next != NULL)
         tmp = tmp->next;
 
@@ -27,9 +29,9 @@ void addFront(Cat*& Cola, char value)
 
 }
 
-bool existsInList(Cat* head, char data)
+bool existsInList(Set* head, char data)
 {
-    Cat* temp = head;
+    Set* temp = head;
     while (temp != nullptr)
     {
         if (temp->value == data)
@@ -40,16 +42,16 @@ bool existsInList(Cat* head, char data)
     return false;
 }
 
-void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D)
+void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D)
 {
-    Cat* tempA = A;
+    Set* tempA = A;
     while (tempA != nullptr) 
     {
         addFront(E, tempA->value);
         tempA = tempA->next;
     }
 
-    Cat* tempB = B;
+    Set* tempB = B;
     while (tempB != nullptr)
     {
         if (existsInList(C, tempB->value) && !existsInList(E, tempB->value))
@@ -58,7 +60,7 @@ void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D)
         tempB = tempB->next;
     }
 
-    Cat* tempD = D;
+    Set* tempD = D;
     while (tempD != nullptr)
     {
         if (!existsInList(E, tempD->value))
@@ -68,9 +70,9 @@ void combineLists(Cat*& E, Cat* A, Cat* B, Cat* C, Cat* D)
     }
 }
 
-void printList(Cat* head)
+void printList(Set* head)
 {
-    Cat* temp = head;
+    Set* temp = head;
     while (temp != nullptr)
     {
         std::cout << temp->value;

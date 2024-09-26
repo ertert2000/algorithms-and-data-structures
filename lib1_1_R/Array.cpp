@@ -34,7 +34,7 @@ void processInput(const char A[], const char B[], const char C[], const char D[]
             if (E[j] == D[i])
                 flag = false;
 
-        for (int j = 0; j < s; j++)
+        for (int j = i; j < s; j++)
             if (E[j] != D[i] && flag)
             {
                 E[sizeOutputArr] = D[i];

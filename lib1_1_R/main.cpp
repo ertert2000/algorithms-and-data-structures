@@ -10,12 +10,7 @@
 
 
 #define MAXSIZE 11
-// ����������� ��� ������ (1).
-// списки(1)
-// массив битов(�����), (1)
-// машинное слово,(�������)
-// �������� ���������(�����),
-// ��������� �������.(�������)
+
 
 int main()
 {
@@ -34,11 +29,11 @@ int main()
     char* D = generateNumbers();
     char E[MAXSIZE];
     char EBit[MAXSIZE];
-    Cat* structA = NULL;
-    Cat* structB = NULL;
-    Cat* structC = NULL;
-    Cat* structD = NULL;
-    Cat* structE = NULL;
+    Set* structA = NULL;
+    Set* structB = NULL;
+    Set* structC = NULL;
+    Set* structD = NULL;
+    Set* structE = NULL;
 
     for(int i = 0; i < powerOfSet; i++)
         std::cout << A[i];
@@ -54,8 +49,6 @@ int main()
     std::cout << std::endl;
 
 
-
-
     //Array
     auto startArray = std::chrono::high_resolution_clock::now();
     processInput(A, B, C, D, E, sizeOutputArr);
@@ -64,8 +57,8 @@ int main()
     std::chrono::duration<double> durationArray = endArray - startArray;
     std::cout << "Execution time for array: " << durationArray.count() << " seconds\n";
 
-    for (auto i : E)
-        std::cout << i;
+    for (int i = 0; i < sizeOutputArr; i++)
+        std::cout << E[i];
 
     std::cout << std::endl;
 
@@ -138,12 +131,13 @@ int main()
     unsigned int wordDiffABC;
     unsigned int wordE;
 
-    auto startMachineWord = std::chrono::high_resolution_clock::now();
 
     createMachineWord(A, strlen(A), wordA);
     createMachineWord(B, strlen(B), wordB);
     createMachineWord(C, strlen(C), wordC);
     createMachineWord(D, strlen(D), wordD);
+
+    auto startMachineWord = std::chrono::high_resolution_clock::now();
 
     wordE = (wordA | (wordB & wordC)) | wordD;
 
