@@ -5,24 +5,34 @@
 //new
 Set* init(char value)
 {
-    Set* node = (Set*)malloc(sizeof(Set));
-    if (!(node))
-        exit(1);
-    node->value = value;
+    Set* node = nullptr;
+    try
+    {
+        node = new Set;
+        
+    }
+    catch (std::exception e) 
+    {
 
-    node->next = NULL;
+        std::cerr << e.what();
+        delete[] node;
+    }
+    node->value = value;
+    node->next = nullptr;
+
+    return node;
 }
 
 void addFront(Set*& Cola, char value)
 {
     Set* temp = init(value);
-    if (Cola == NULL) 
+    if (Cola == nullptr)
     {
         Cola = temp;
         return;
     }
     Set* tmp = Cola;
-    while (tmp->next != NULL)
+    while (tmp->next != nullptr)
         tmp = tmp->next;
 
     tmp->next = temp;
@@ -31,15 +41,16 @@ void addFront(Set*& Cola, char value)
 
 bool existsInList(Set* head, char data)
 {
+    bool flag = false;
     Set* temp = head;
     while (temp != nullptr)
     {
         if (temp->value == data)
-            return true;
+            flag = true;
 
         temp = temp->next;
     }
-    return false;
+    return flag;
 }
 
 void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D)

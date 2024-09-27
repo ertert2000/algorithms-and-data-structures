@@ -14,7 +14,7 @@ void processInput(const char A[], const char B[], const char C[], const char D[]
     {
         flag = true;
         for (int j = 0; j < powerOfSet; j++)
-            if (B[i] == E[j] || C[i] == E[j])
+            if (B[i] == E[j])
                 flag = false;
 
         for (int j = 0; j < powerOfSet; j++)

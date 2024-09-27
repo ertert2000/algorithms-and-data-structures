@@ -19,9 +19,8 @@ char* generateNumbers()
     }
 
     int index = 0;
-    for (int num : uniqueNumbers) {
+    for (int num : uniqueNumbers)
         result[index++] = '0' + num;
-    }
 
     return result;
 }

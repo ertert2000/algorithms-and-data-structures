@@ -31,15 +31,12 @@ void setIntersection(const bool setA[], const bool setB[], bool result[])
 
 }
 
-void processInputBit(const char A[], const char B[], const char C[], const char D[], char E[], int& sizeOutputArr) 
+void processInputBit(const bool bitA[], const bool bitB[], const bool bitC[], const bool bitD[], char E[], int& sizeOutputArr)
 {
-    bool bitA[universeSize], bitB[universeSize], bitC[universeSize], bitD[universeSize];
+    
     bool tempBC[universeSize], tempABC[universeSize];
 
-    createSet(A, bitA);
-    createSet(B, bitB);
-    createSet(C, bitC);
-    createSet(D, bitD);
+    
 
     setIntersection(bitB, bitC, tempBC);
 

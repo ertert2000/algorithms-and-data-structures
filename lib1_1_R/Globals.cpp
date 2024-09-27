@@ -1,3 +1,3 @@
 #include "Globals.h"
 
-int powerOfSet;
+int powerOfSet = 0;
