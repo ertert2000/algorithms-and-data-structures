@@ -5,33 +5,22 @@
 //new
 Set* init(char value)
 {
-    Set* node = nullptr;
-    try
-    {
-        node = new Set;
-        
-    }
-    catch (std::exception e) 
-    {
-
-        std::cerr << e.what();
-        delete[] node;
-    }
+    Set* node = new Set;
     node->value = value;
     node->next = nullptr;
 
     return node;
 }
 
-void addFront(Set*& Cola, char value)
+void addFront(Set*& node, char value)
 {
     Set* temp = init(value);
-    if (Cola == nullptr)
+    if (node == nullptr)
     {
-        Cola = temp;
+        node = temp;
         return;
     }
-    Set* tmp = Cola;
+    Set* tmp = node;
     while (tmp->next != nullptr)
         tmp = tmp->next;
 

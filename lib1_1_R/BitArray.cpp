@@ -30,24 +30,13 @@ void setIntersection(const bool setA[], const bool setB[], bool result[])
         result[i] = setA[i] && setB[i];
 
 }
-
-void processInputBit(const bool bitA[], const bool bitB[], const bool bitC[], const bool bitD[], char E[], int& sizeOutputArr)
+void processInputBit(const bool bitA[], const bool bitB[], const bool bitC[], const bool bitD[], bool tempABC[])
 {
-    
-    bool tempBC[universeSize], tempABC[universeSize];
-
-    
+    bool tempBC[universeSize];
 
     setIntersection(bitB, bitC, tempBC);
 
     setUnion(bitA, tempBC, tempABC);
 
     setUnion(tempABC, bitD, tempABC);
-
-    sizeOutputArr = 0;
-    for (int i = 0; i < universeSize; i++)
-        if (tempABC[i])
-            E[sizeOutputArr++] = '0' + i;
-
-    E[sizeOutputArr] = '\0';
 }
