@@ -161,11 +161,12 @@ int main()
 
     auto startMachineWord = std::chrono::high_resolution_clock::now();
 
-    wordE = (wordA | (wordB & wordC)) | wordD;
+    for (int i = 0; i < 100; i++)
+        wordE = (wordA | (wordB & wordC)) | wordD;
 
     auto endMachineWord = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord;
-    std::cout << "Execution time for a machine word: " << durationMachineWord.count() << " seconds\n";
+    std::cout << "Execution time for a machine word: " << durationMachineWord.count() / 100 << " seconds\n";
 
     std::cout << "Result Machine Word: ";
     printMachineWord(wordE);
