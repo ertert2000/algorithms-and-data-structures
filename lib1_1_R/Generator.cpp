@@ -24,5 +24,3 @@ char* generateNumbers()
 
     return result;
 }
-
-

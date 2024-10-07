@@ -24,36 +24,19 @@ int main()
     char* B = generateNumbers();
     char* C = generateNumbers();
     char* D = generateNumbers();
-    /*char A[6] = { '0', '1', '2', '3', '4', '5' };
-    char B[6] = { '0', '1', '2', '3', '4', '5' };
-    char C[6] = { '0', '1', '2', '3', '4', '5' };
-    char D[6] = { '0', '1', '2', '3', '4', '5' };*/
     char E[MAXSIZE];
-    char EBit[MAXSIZE];
-    Set* structA = NULL;
-    Set* structB = NULL;
-    Set* structC = NULL;
-    Set* structD = NULL;
-    Set* structE = NULL;
+    char EBit[11];
+    Set* structA = nullptr;
+    Set* structB = nullptr;
+    Set* structC = nullptr;
+    Set* structD = nullptr;
+    Set* structE = nullptr;
 
 
-    std::cout << "Set A: ";
-    for(int i = 0; i < powerOfSet; i++)
-        std::cout << A[i];
-    std::cout << std::endl;
-    std::cout << "Set B: ";
-    for (int i = 0; i < powerOfSet; i++)
-        std::cout << B[i];
-    std::cout << std::endl;
-    std::cout << "Set C: ";
-    for (int i = 0; i < powerOfSet; i++)
-        std::cout << C[i];
-    std::cout << std::endl;
-    std::cout << "Set D: ";
-    for (int i = 0; i < powerOfSet; i++)
-        std::cout << D[i];
-    std::cout << std::endl;
-    std::cout << std::endl;
+    std::cout << "Set A: " << A << std::endl;
+    std::cout << "Set B: " << B << std::endl;
+    std::cout << "Set C: " << C << std::endl;
+    std::cout << "Set D: " << D << std::endl << std::endl;
 
 
     //Array
@@ -65,8 +48,7 @@ int main()
     std::cout << "Execution time for array: " << durationArray.count() << " seconds\n";
 
     std::cout << "Result Array: ";
-    for (int i = 0; i < sizeOutputArr; i++)
-        std::cout << E[i];
+    std::cout << E;
 
     std::cout << std::endl;
     std::cout << std::endl;
@@ -121,6 +103,7 @@ int main()
 
     //Bit Array
     bool bitA[10], bitB[10], bitC[10], bitD[10];
+    bool bitE[10];
 
     createSet(A, bitA);
     createSet(B, bitB);
@@ -128,16 +111,21 @@ int main()
     createSet(D, bitD);
 
     auto startBitArray = std::chrono::high_resolution_clock::now();
-    processInputBit(bitA, bitB, bitC, bitD, EBit, sizeOutputArrBit);
+    processInputBit(bitA, bitB, bitC, bitD, bitE);
 
     auto endBitArray = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> durationBitArray = endBitArray - startBitArray;
     std::cout << "Execution time for bit array: " << durationBitArray.count() << " seconds\n";
 
     std::cout << "Result Bit Array: ";
-    for (int i = 0; i < sizeOutputArrBit; i++)
-        std::cout << EBit[i];
+    sizeOutputArr = 0;
+    for (int i = 0; i < 10; i++)
+        if (bitE[i])
+            EBit[sizeOutputArr++] = '0' + i;
 
+    EBit[sizeOutputArr] = '\0';
+
+    std::cout << EBit;
     std::cout << std::endl;
     std::cout << std::endl;
 
@@ -161,17 +149,27 @@ int main()
 
     auto startMachineWord = std::chrono::high_resolution_clock::now();
 
-    for (int i = 0; i < 100; i++)
-        wordE = (wordA | (wordB & wordC)) | wordD;
+    wordE = (wordA | (wordB & wordC)) | wordD;
 
     auto endMachineWord = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord;
-    std::cout << "Execution time for a machine word: " << durationMachineWord.count() / 100 << " seconds\n";
+    std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord; //Из документации в секундах
+    std::cout << "Execution time for a machine word: " << durationMachineWord.count() << " seconds\n";
 
     std::cout << "Result Machine Word: ";
     printMachineWord(wordE);
 
 
 
+
+
+    //free memory
+    delete A;
+    delete B;
+    delete C;
+    delete D;
+    delete structA;
+    delete structB;
+    delete structC;
+    delete structD;
     return 0;
 }
