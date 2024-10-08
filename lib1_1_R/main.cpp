@@ -154,7 +154,7 @@ int main()
     auto endMachineWord = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord; //Из документации в секундах
     std::cout << "Execution time for a machine word: " << durationMachineWord.count() << " seconds\n";
-
+    
     std::cout << "Result Machine Word: ";
     printMachineWord(wordE);
 

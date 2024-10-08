@@ -28,6 +28,14 @@ void addFront(Set*& node, char value)
 
 }
 
+void addBack(Set*& node, char value) 
+{
+    Set* temp = init(value);
+    temp->next = node;
+
+    node = temp;
+}
+
 bool existsInList(Set* head, char data)
 {
     bool flag = false;
@@ -47,7 +55,7 @@ void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D)
     Set* tempA = A;
     while (tempA != nullptr) 
     {
-        addFront(E, tempA->value);
+        addBack(E, tempA->value);
         tempA = tempA->next;
     }
 
@@ -55,7 +63,7 @@ void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D)
     while (tempB != nullptr)
     {
         if (existsInList(C, tempB->value) && !existsInList(E, tempB->value))
-            addFront(E, tempB->value);
+            addBack(E, tempB->value);
 
         tempB = tempB->next;
     }
@@ -64,7 +72,7 @@ void combineLists(Set*& E, Set* A, Set* B, Set* C, Set* D)
     while (tempD != nullptr)
     {
         if (!existsInList(E, tempD->value))
-            addFront(E, tempD->value);
+            addBack(E, tempD->value);
 
         tempD = tempD->next;
     }
