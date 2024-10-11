@@ -152,7 +152,7 @@ int main()
     wordE = (wordA | (wordB & wordC)) | wordD;
 
     auto endMachineWord = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord; //Из документации в секундах
+    std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord; //РёР· РґРѕРєСѓРјРµРЅС‚Р°Р№РёРё РІ СЃРµРєСѓРЅРґР°С…
     std::cout << "Execution time for a machine word: " << durationMachineWord.count() << " seconds\n";
     
     std::cout << "Result Machine Word: ";
