@@ -1,13 +1,20 @@
 #pragma once
+#include <ostream>
+
 class SetArray
 {
 private:
 	char* arr = new char[11];
+
+	int len();
 public:
-	SetArray(const char arr[]);
+	SetArray(char arr[]);
 
 	SetArray();
 
-	void printArray();
+	friend std::ostream& operator<<(std::ostream& sys, const SetArray& setArray);
+
+	static SetArray processInput(SetArray A, SetArray B, SetArray C, SetArray D);
+
 };
 
