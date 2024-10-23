@@ -130,9 +130,18 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SetArray.cpp" />
+    <ClCompile Include="SetBoolArray.cpp" />
+    <ClCompile Include="setList.cpp" />
+    <ClCompile Include="SetMachineWord.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SetArray.h" />
+    <ClInclude Include="SetBoolArray.h" />
+    <ClInclude Include="setList.h" />
+    <ClInclude Include="SetMachineWord.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Тексt.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
