@@ -22,6 +22,8 @@ SetMachineWord SetMachineWord::processInput(SetMachineWord A, SetMachineWord B, 
 	return res;
 }
 
+//SetMachineWord::~SetMachineWord() {}
+
 std::ostream& operator<<(std::ostream& sys, const SetMachineWord& setMachineWord)
 {
 	for (int i = 0; i < 10; i++)

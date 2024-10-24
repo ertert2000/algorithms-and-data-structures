@@ -41,6 +41,11 @@ SetBoolArray SetBoolArray::processInput(SetBoolArray bitA, SetBoolArray bitB, Se
     return (bitA || (bitB && bitC)) || bitD;
 }
 
+//SetBoolArray::~SetBoolArray()
+//{
+//    delete[] this->arr;
+//}
+
 std::ostream& operator<<(std::ostream& sys, const SetBoolArray& SetList)
 {
     char res[11];

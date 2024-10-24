@@ -78,3 +78,8 @@ SetArray SetArray::processInput(SetArray A, SetArray B, SetArray C, SetArray D)
 
     return E;
 }
+
+//SetArray::~SetArray()
+//{
+//    delete[] this->arr;
+//}
