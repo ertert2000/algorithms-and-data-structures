@@ -52,9 +52,7 @@ int main()
 	setList AList = setList(A);
 	setList BList = setList(B);
 	setList CList = setList(C);
-	setList DList = setList(D);/*gfffffffffffffffffffffffffffffgdgrbgtsr4febgtvfr tcfrevgtfare
-		 reatfrsetgfcsrsetgrfdecawvfrcdewvcrfxde v3ewvcrdew bvg43e wexd3wred2ws3ww
-		ץףייייייייייייייייייייייי ץףי חףי ץףי ץךי ן ûןנףצג*/
+	setList DList = setList(D);
 
 	auto startList = std::chrono::high_resolution_clock::now();
 
