@@ -1,7 +1,6 @@
 #pragma once
 #include <ostream>
 
-
 class setList
 {
 private:

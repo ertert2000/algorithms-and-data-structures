@@ -1,4 +1,5 @@
 #include "SetArray.h"
+#include "Globals.h"
 #include <iostream>
 
 
@@ -35,7 +36,6 @@ SetArray SetArray::processInput(SetArray A, SetArray B, SetArray C, SetArray D)
 {
     
     SetArray E;
-    int powerOfSet = A.len();
     int sizeOutputArr = powerOfSet;
 
     for (int i = 0; i < powerOfSet; i++)

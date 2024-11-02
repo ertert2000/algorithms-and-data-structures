@@ -1,4 +1,5 @@
 #include "setList.h"
+#include "Globals.h"
 #include <iostream>
 #include <ostream>
 
@@ -7,7 +8,7 @@ setList::setList() : head(nullptr) {}
 setList::setList(const char input[])
 {
     head = nullptr;
-    for (int i = 0; i < 4; i++) 
+    for (int i = 0; i < powerOfSet; i++)
     {
         if (i == 0)
             head = init(input[i]);

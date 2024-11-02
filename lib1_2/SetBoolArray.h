@@ -1,5 +1,6 @@
 #pragma once
 #include <ostream>
+
 class SetBoolArray
 {
 private:
@@ -13,6 +14,8 @@ public:
 	SetBoolArray operator||(const SetBoolArray& other);
 
 	SetBoolArray operator&&(const SetBoolArray& other);
+
+	SetBoolArray& operator=(const SetBoolArray& other);
 
 	friend std::ostream& operator<<(std::ostream& sys, const SetBoolArray& SetList);
 
