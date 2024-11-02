@@ -21,5 +21,6 @@ public:
 
 	static SetBoolArray processInput(SetBoolArray bitA, SetBoolArray bitB, SetBoolArray bitC, SetBoolArray bitD);
 
+	//~SetBoolArray();
 };
 

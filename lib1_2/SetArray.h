@@ -16,5 +16,6 @@ public:
 
 	static SetArray processInput(SetArray A, SetArray B, SetArray C, SetArray D);
 
+	//~SetArray();
 };
 

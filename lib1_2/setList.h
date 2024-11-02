@@ -28,5 +28,6 @@ public:
 
 	static setList processInput(setList A, setList B, setList C, setList D);
 
+	//~setList();
 };
 

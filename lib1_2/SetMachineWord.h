@@ -14,5 +14,6 @@ public:
 
 	static SetMachineWord processInput(SetMachineWord A, SetMachineWord B, SetMachineWord C, SetMachineWord D);
 
+	//~SetMachineWord();
 };
 

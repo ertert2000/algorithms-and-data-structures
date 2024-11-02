@@ -106,3 +106,8 @@ setList setList::processInput(setList A, setList B, setList C, setList D)
 
     return E;
 }
+
+//setList::~setList()
+//{
+//    delete this->head;
+//}
