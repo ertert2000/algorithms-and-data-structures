@@ -1,5 +1,5 @@
 #pragma once
-#include <ostream>
+#include <iostream>
 
 class SetBoolArray
 {

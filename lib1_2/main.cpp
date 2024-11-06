@@ -12,6 +12,7 @@
 
 int main() 
 {
+	srand(time(nullptr));
 	int i = 0;
 	SetArray Es;
 	setList EList;

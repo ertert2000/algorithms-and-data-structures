@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 
-setList::setList() : head(nullptr) {}
+setList::setList() : head(nullptr) { /*std::cout << "default constructor called" << std::endl;*/ }
 
 setList::setList(const char input[])
 {
@@ -15,6 +15,7 @@ setList::setList(const char input[])
         else
             addFront(head, input[i]);
     }
+    //std::cout << "string constructor called" << std::endl;
 }
 
 setList::List* setList::init(char value)
@@ -24,6 +25,8 @@ setList::List* setList::init(char value)
     node->next = nullptr;
 
     return node;
+
+    //std::cout << "init called" << std::endl;
 }
 
 void setList::addFront(List*& node, char value)
@@ -39,6 +42,8 @@ void setList::addFront(List*& node, char value)
         tmp = tmp->next;
 
     tmp->next = temp;
+
+    //std::cout << "add front called" << std::endl;
 }
 
 
@@ -59,6 +64,7 @@ void setList::addBack(List*& node, char value)
     temp->next = node;
 
     node = temp;
+    //std::cout << "add back called" << std::endl;
 }
 
 bool setList::existsInList(List* head, char data)
@@ -72,6 +78,7 @@ bool setList::existsInList(List* head, char data)
 
         temp = temp->next;
     }
+    //std::cout << "exists in list called" << std::endl;
     return flag;
 }
 
@@ -103,7 +110,7 @@ setList setList::processInput(setList A, setList B, setList C, setList D)
 
         tempD = tempD->next;
     }
-
+    //std::cout << "process input called" << std::endl;
     return E;
 }
 

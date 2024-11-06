@@ -5,8 +5,6 @@ class SetArray
 {
 private:
 	char* arr = new char[11];
-
-	int len();
 public:
 	SetArray(char arr[]);
 

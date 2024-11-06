@@ -2,7 +2,7 @@
 #include "Globals.h"
 
 
-SetBoolArray::SetBoolArray() { this->arr = new bool[11]; }
+SetBoolArray::SetBoolArray() { this->arr = new bool[11]; /*std::cout << "default constructor called" << std::endl;*/ }
 
 SetBoolArray::SetBoolArray(const char input[])
 {
@@ -16,6 +16,7 @@ SetBoolArray::SetBoolArray(const char input[])
         int index = input[i] - '0';
         this->arr[index] = true;
     }
+    //std::cout << "string constructor called" << std::endl;
 }
 
 SetBoolArray SetBoolArray::operator||(const SetBoolArray& other)
@@ -25,6 +26,7 @@ SetBoolArray SetBoolArray::operator||(const SetBoolArray& other)
     for (int i = 0; i < this->universeSize; i++)
         res.arr[i] = this->arr[i] || other.arr[i];
 
+    //std::cout << "operator || called" << std::endl;
     return res;
 }
 
@@ -34,6 +36,7 @@ SetBoolArray SetBoolArray::operator&&(const SetBoolArray& other)
     for (int i = 0; i < this->universeSize; i++)
         res.arr[i] = this->arr[i] && other.arr[i];
 
+    //std::cout << "operator && called" << std::endl;
     return res;
 }
 
@@ -45,11 +48,13 @@ SetBoolArray& SetBoolArray::operator=(const SetBoolArray& other)
         arr = new bool[universeSize]();
         std::memcpy(arr, other.arr, universeSize * sizeof(bool));
     }
+    //std::cout << "operator = called" << std::endl;
     return *this;
 }
 
 SetBoolArray SetBoolArray::processInput(SetBoolArray bitA, SetBoolArray bitB, SetBoolArray bitC, SetBoolArray bitD)
 {
+    //std::cout << "process input called" << std::endl;
     return (bitA || (bitB && bitC)) || bitD;
 }
 

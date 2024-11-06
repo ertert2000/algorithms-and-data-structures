@@ -10,31 +10,24 @@ SetArray::SetArray(char arr[]) {
 		i++;
 	}
     this->arr[i] = '\0';
+
+    //std::cout << "string constructor called" << std::endl;
 }
 
 SetArray::SetArray() {
-	int j = 0;	for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)
 		arr[i] = '\0';
+    //std::cout << "default constructor called" << std::endl;
 }
 
 std::ostream& operator<< (std::ostream& sys, const SetArray& setArray)
 {
-	sys << setArray.arr;
+    sys << setArray.arr;
 	return sys;
-}
-
-int SetArray::len()
-{
-    int res = 0;
-    while (arr[res] != '\0')
-        res++;
-
-    return res;
 }
 
 SetArray SetArray::processInput(SetArray A, SetArray B, SetArray C, SetArray D)
 {
-    
     SetArray E;
     int sizeOutputArr = powerOfSet;
 
@@ -76,6 +69,9 @@ SetArray SetArray::processInput(SetArray A, SetArray B, SetArray C, SetArray D)
 
     }
 
+
+    E.arr[sizeOutputArr] = '\0';
+    //std::cout << "process input called" << std::endl;
     return E;
 }
 
