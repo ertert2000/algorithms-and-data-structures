@@ -38,16 +38,16 @@ int main()
 	SetArray Bs = SetArray(B);
 	SetArray Cs = SetArray(C);
 	SetArray Ds = SetArray(D);
-
 	auto startArray = std::chrono::high_resolution_clock::now();
 
-	Es = SetArray::processInput(As, Bs, Cs, Ds);
+	Es = (As | (Bs & Cs)) | Ds;
 
 	auto endArray = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> durationArray = endArray - startArray;
 	std::cout << "Execution time for array: " << durationArray.count() << " seconds\n";
 
 	std::cout << "Result Array: " << Es << std::endl << std::endl << std::endl;
+
 
 
 	setList AList = setList(A);
@@ -57,13 +57,14 @@ int main()
 
 	auto startList = std::chrono::high_resolution_clock::now();
 
-	EList = setList::processInput(AList, BList, CList, DList);
+	EList = (AList | (BList & CList)) | DList;
 
 	auto endList = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> durationList = endList - startList;
 	std::cout << "Execution time for lists: " << durationList.count() << " seconds\n";
 
 	std::cout << "Result List: " << EList << std::endl << std::endl << std::endl;
+
 
 
 	SetBoolArray ABool = SetBoolArray(A);
@@ -73,7 +74,7 @@ int main()
 
 	auto startBitArray = std::chrono::high_resolution_clock::now();
 
-	EBool = SetBoolArray::processInput(ABool, BBool, CBool, DBool);
+	EBool = (ABool | (BBool & CBool)) | DBool;
 
 	auto endBitArray = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> durationBitArray = endBitArray - startBitArray;
@@ -89,7 +90,7 @@ int main()
 
 	auto startMachineWord = std::chrono::high_resolution_clock::now();
 
-	EWord = SetMachineWord::processInput(AWord, BWord, CWord, DWord);
+	EWord = (AWord | (BWord & CWord)) | DWord;
 
 	auto endMachineWord = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> durationMachineWord = endMachineWord - startMachineWord;

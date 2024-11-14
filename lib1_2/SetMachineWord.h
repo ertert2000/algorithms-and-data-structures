@@ -10,9 +10,13 @@ public:
 
 	SetMachineWord(const char array[]);
 
-	friend std::ostream& operator<<(std::ostream& sys, const SetMachineWord& SetList);
+	SetMachineWord(const SetMachineWord& other);
 
-	static SetMachineWord processInput(SetMachineWord A, SetMachineWord B, SetMachineWord C, SetMachineWord D);
+	SetMachineWord operator&(const SetMachineWord& B) const;
+
+	SetMachineWord operator|(const SetMachineWord& B) const;
+
+	friend std::ostream& operator<<(std::ostream& sys, const SetMachineWord& SetList);
 
 	//~SetMachineWord();
 };

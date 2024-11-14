@@ -16,18 +16,27 @@ private:
 
     void addFront(List*& node, char value);
 
-	static void addBack(List*& node, char value);
+	void addBack(char value);
 
-	static bool existsInList(List* head, char data);
+	void clear();
+
+	bool exists(char value) const;
 public:
 	setList();
 
 	setList(const char input[]);
 
+	setList(const setList& other);
+
 	friend std::ostream& operator<<(std::ostream& sys, const setList& setArray);
 
-	static setList processInput(setList A, setList B, setList C, setList D);
+	setList& operator=(const setList& other);
 
-	//~setList();
+	setList operator&(const setList& other) const;
+
+	setList operator|(const setList& other);
+
+
+	~setList();
 };
 

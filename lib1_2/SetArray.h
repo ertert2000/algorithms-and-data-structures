@@ -5,14 +5,20 @@ class SetArray
 {
 private:
 	char* arr = new char[11];
+
+	int n = 0;
 public:
-	SetArray(char arr[]);
+	SetArray(const char* input);
+
+	SetArray(const SetArray& other);
 
 	SetArray();
 
-	friend std::ostream& operator<<(std::ostream& sys, const SetArray& setArray);
+	SetArray operator&(const SetArray& other) const;
 
-	static SetArray processInput(SetArray A, SetArray B, SetArray C, SetArray D);
+	SetArray operator|(const SetArray& other) const;
+
+	friend std::ostream& operator<<(std::ostream& sys, const SetArray& setArray);
 
 	//~SetArray();
 };

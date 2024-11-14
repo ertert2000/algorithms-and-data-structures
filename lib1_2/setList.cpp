@@ -18,6 +18,57 @@ setList::setList(const char input[])
     //std::cout << "string constructor called" << std::endl;
 }
 
+setList::setList(const setList& other) : head(nullptr)
+{
+    List* current = other.head;
+    while (current) 
+    {
+        addBack(current->value);
+        current = current->next;
+    }
+}
+
+setList& setList::operator=(const setList& other)
+{
+    if (this != &other) 
+    {
+        clear();
+        List* current = other.head;
+        while (current) 
+        {
+            addBack(current->value);
+            current = current->next;
+        }
+    }
+    return *this;
+}
+
+setList setList::operator&(const setList& other) const
+{
+    setList result;
+    List* current = head;
+    while (current) 
+    {
+        if (other.exists(current->value))
+            result.addBack(current->value);
+        current = current->next;
+    }
+    return result;
+}
+
+setList setList::operator|(const setList& other)
+{
+    setList result(*this); 
+    List* current = other.head;
+    while (current) 
+    {
+        if (!result.exists(current->value))
+            result.addBack(current->value);
+        current = current->next;
+    }
+    return result;
+}
+
 setList::List* setList::init(char value)
 {
     List* node = new List;
@@ -58,63 +109,44 @@ std::ostream& operator<<(std::ostream& sys, const setList& SetList)
     return sys;
 }
 
-void setList::addBack(List*& node, char value)
+void setList::addBack(char value)
 {
-    List* temp = init(value);
-    temp->next = node;
-
-    node = temp;
+    if (!head)
+        head = init(value);
+    else 
+    {
+        List* temp = head;
+        while (temp->next)
+            temp = temp->next;
+        temp->next = init(value);
+    }
     //std::cout << "add back called" << std::endl;
 }
 
-bool setList::existsInList(List* head, char data)
-{
-    bool flag = false;
-    List* temp = head;
-    while (temp != nullptr)
-    {
-        if (temp->value == data)
-            flag = true;
 
-        temp = temp->next;
+void setList::clear()
+{
+    while (head) 
+    {
+        List* temp = head;
+        head = head->next;
+        delete temp;
     }
-    //std::cout << "exists in list called" << std::endl;
-    return flag;
 }
 
-setList setList::processInput(setList A, setList B, setList C, setList D)
+bool setList::exists(char value) const
 {
-    setList E = setList();
-
-    List* tempA = A.head;
-    while (tempA != nullptr)
+    List* current = head;
+    while (current) 
     {
-        addBack(E.head, tempA->value);
-        tempA = tempA->next;
+        if (current->value == value)
+            return true;
+        current = current->next;
     }
-
-    List* tempB = B.head;
-    while (tempB != nullptr)
-    {
-        if (existsInList(C.head, tempB->value) && !existsInList(E.head, tempB->value))
-            addBack(E.head, tempB->value);
-
-        tempB = tempB->next;
-    }
-
-    List* tempD = D.head;
-    while (tempD != nullptr)
-    {
-        if (!existsInList(E.head, tempD->value))
-            addBack(E.head, tempD->value);
-
-        tempD = tempD->next;
-    }
-    //std::cout << "process input called" << std::endl;
-    return E;
+    return false;
 }
 
-//setList::~setList()
-//{
-//    delete this->head;
-//}
+setList::~setList()
+{
+    clear();
+}

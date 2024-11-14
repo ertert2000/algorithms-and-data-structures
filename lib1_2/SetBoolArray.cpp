@@ -19,7 +19,7 @@ SetBoolArray::SetBoolArray(const char input[])
     //std::cout << "string constructor called" << std::endl;
 }
 
-SetBoolArray SetBoolArray::operator||(const SetBoolArray& other)
+SetBoolArray SetBoolArray::operator|(const SetBoolArray& other)
 {
     SetBoolArray res;
 
@@ -30,7 +30,7 @@ SetBoolArray SetBoolArray::operator||(const SetBoolArray& other)
     return res;
 }
 
-SetBoolArray SetBoolArray::operator&&(const SetBoolArray& other)
+SetBoolArray SetBoolArray::operator&(const SetBoolArray& other)
 {
     SetBoolArray res;
     for (int i = 0; i < this->universeSize; i++)
@@ -50,12 +50,6 @@ SetBoolArray& SetBoolArray::operator=(const SetBoolArray& other)
     }
     //std::cout << "operator = called" << std::endl;
     return *this;
-}
-
-SetBoolArray SetBoolArray::processInput(SetBoolArray bitA, SetBoolArray bitB, SetBoolArray bitC, SetBoolArray bitD)
-{
-    //std::cout << "process input called" << std::endl;
-    return (bitA || (bitB && bitC)) || bitD;
 }
 
 //SetBoolArray::~SetBoolArray()

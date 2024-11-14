@@ -1,17 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "SetArray.h"
 #include "Globals.h"
 #include <iostream>
+#include <cstring>
 
-
-SetArray::SetArray(char arr[]) {
-	int i = 0;
-	while (arr[i] != '\0') {
-		this->arr[i] = arr[i];
-		i++;
-	}
-    this->arr[i] = '\0';
+SetArray::SetArray(const char* input) 
+{
+    n = std::min((int)strlen(input), powerOfSet);
+    strncpy(arr, input, n);
+    arr[n] = '\0';
 
     //std::cout << "string constructor called" << std::endl;
+}
+
+SetArray::SetArray(const SetArray& other) : n(other.n)
+{
+    this->arr = new char[11];
+    strcpy(arr, other.arr);
+
+    //std::cout << "Set copy constructor called for Set " << std::endl;
 }
 
 SetArray::SetArray() {
@@ -26,53 +34,26 @@ std::ostream& operator<< (std::ostream& sys, const SetArray& setArray)
 	return sys;
 }
 
-SetArray SetArray::processInput(SetArray A, SetArray B, SetArray C, SetArray D)
+SetArray SetArray::operator&(const SetArray& other) const
 {
-    SetArray E;
-    int sizeOutputArr = powerOfSet;
+    SetArray result;
+    for (int i = 0; i < n; ++i)
+        if (strchr(other.arr, arr[i]))
+            result.arr[result.n++] = arr[i];
 
-    for (int i = 0; i < powerOfSet; i++)
-        E.arr[i] = A.arr[i];
+    result.arr[result.n] = '\0';
+    return result;
+}
 
-    bool flag;
-    for (int i = 0; i < powerOfSet; i++)
-    {
-        flag = true;
-        for (int j = 0; j < powerOfSet; j++)
-            if (B.arr[i] == E.arr[j])
-                flag = false;
+SetArray SetArray::operator|(const SetArray& other) const
+{
+    SetArray result(*this);
+    for (int i = 0; i < other.n; ++i)
+        if (!strchr(result.arr, other.arr[i]))
+            result.arr[result.n++] = other.arr[i];
 
-        for (int j = 0; j < powerOfSet; j++)
-            if (B.arr[i] == C.arr[j] && B.arr[j] != E.arr[i] && flag)
-            {
-                E.arr[sizeOutputArr] = B.arr[i];
-                sizeOutputArr++;
-            }
-
-    }
-
-    int s = sizeOutputArr;
-    for (int i = 0; i < powerOfSet; i++)
-    {
-        flag = true;
-        for (int j = 0; j < s; j++)
-            if (E.arr[j] == D.arr[i])
-                flag = false;
-
-        for (int j = i; j < s; j++)
-            if (E.arr[j] != D.arr[i] && flag)
-            {
-                E.arr[sizeOutputArr] = D.arr[i];
-                sizeOutputArr++;
-                break;
-            }
-
-    }
-
-
-    E.arr[sizeOutputArr] = '\0';
-    //std::cout << "process input called" << std::endl;
-    return E;
+    result.arr[result.n] = '\0';
+    return result;
 }
 
 //SetArray::~SetArray()

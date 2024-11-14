@@ -13,13 +13,22 @@ SetMachineWord::SetMachineWord(const char input[])
 	//std::cout << "string constructor called" << std::endl;
 }
 
-SetMachineWord SetMachineWord::processInput(SetMachineWord A, SetMachineWord B, SetMachineWord C, SetMachineWord D)
-{
-	SetMachineWord res = SetMachineWord();
-	res.word = (A.word | (B.word & C.word)) | D.word;
+SetMachineWord::SetMachineWord(const SetMachineWord& other) : word(other.word) {}
 
-	//std::cout << "process input called" << std::endl;
-	return res;
+SetMachineWord SetMachineWord::operator&(const SetMachineWord& B) const
+{
+	SetMachineWord result;
+	result.word = word & B.word;
+	//std::cout << "Set intersection operator called for Set " << std::endl;
+	return result;
+}
+
+SetMachineWord SetMachineWord::operator|(const SetMachineWord& B) const
+{
+	SetMachineWord result;
+	result.word = word | B.word;
+	//std::cout << "Set union operator called for Set " << std::endl;
+	return result;
 }
 
 //SetMachineWord::~SetMachineWord() {}
