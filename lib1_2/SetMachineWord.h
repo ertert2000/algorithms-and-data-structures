@@ -18,6 +18,6 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& sys, const SetMachineWord& SetList);
 
-	//~SetMachineWord();
+	~SetMachineWord();
 };
 

@@ -11,6 +11,8 @@ public:
 
 	SetBoolArray(const char input[]);
 
+	SetBoolArray(const SetBoolArray& other);
+
 	SetBoolArray operator|(const SetBoolArray& other);
 
 	SetBoolArray operator&(const SetBoolArray& other);
@@ -19,6 +21,6 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& sys, const SetBoolArray& SetList);
 
-	//~SetBoolArray();
+	~SetBoolArray();
 };
 

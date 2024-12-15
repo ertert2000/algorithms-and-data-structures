@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 
-setList::setList() : head(nullptr) { /*std::cout << "default constructor called" << std::endl;*/ }
+setList::setList() : head(nullptr) { std::cout << "default constructor called" << std::endl; }
 
 setList::setList(const char input[])
 {
@@ -15,7 +15,7 @@ setList::setList(const char input[])
         else
             addFront(head, input[i]);
     }
-    //std::cout << "string constructor called" << std::endl;
+    std::cout << "string constructor called" << std::endl;
 }
 
 setList::setList(const setList& other) : head(nullptr)
@@ -26,6 +26,7 @@ setList::setList(const setList& other) : head(nullptr)
         addBack(current->value);
         current = current->next;
     }
+    std::cout << "Set copy constructor called for List " << std::endl;
 }
 
 setList& setList::operator=(const setList& other)
@@ -40,6 +41,7 @@ setList& setList::operator=(const setList& other)
             current = current->next;
         }
     }
+    std::cout << "operator = called" << std::endl;
     return *this;
 }
 
@@ -53,6 +55,7 @@ setList setList::operator&(const setList& other) const
             result.addBack(current->value);
         current = current->next;
     }
+    std::cout << "operator & called" << std::endl;
     return result;
 }
 
@@ -66,6 +69,7 @@ setList setList::operator|(const setList& other)
             result.addBack(current->value);
         current = current->next;
     }
+    std::cout << "operator | called" << std::endl;
     return result;
 }
 
@@ -77,7 +81,7 @@ setList::List* setList::init(char value)
 
     return node;
 
-    //std::cout << "init called" << std::endl;
+    std::cout << "init called" << std::endl;
 }
 
 void setList::addFront(List*& node, char value)
@@ -94,7 +98,7 @@ void setList::addFront(List*& node, char value)
 
     tmp->next = temp;
 
-    //std::cout << "add front called" << std::endl;
+    std::cout << "add front called" << std::endl;
 }
 
 
@@ -120,7 +124,7 @@ void setList::addBack(char value)
             temp = temp->next;
         temp->next = init(value);
     }
-    //std::cout << "add back called" << std::endl;
+    std::cout << "add back called" << std::endl;
 }
 
 
@@ -136,6 +140,7 @@ void setList::clear()
 
 bool setList::exists(char value) const
 {
+    std::cout << "exists called" << std::endl;
     List* current = head;
     while (current) 
     {
@@ -148,5 +153,6 @@ bool setList::exists(char value) const
 
 setList::~setList()
 {
+    std::cout << "List destructor called" << std::endl;
     clear();
 }

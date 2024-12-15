@@ -18,8 +18,10 @@ public:
 
 	SetArray operator|(const SetArray& other) const;
 
+	SetArray& operator=(const SetArray& other);
+
 	friend std::ostream& operator<<(std::ostream& sys, const SetArray& setArray);
 
-	//~SetArray();
+	~SetArray();
 };
 
