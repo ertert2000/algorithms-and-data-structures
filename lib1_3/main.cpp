@@ -8,7 +8,7 @@
 int main()
 {
     int choise = 0;
-	Tree tree;
+	Tree<char> tree;
 
     while (!choise)
     {
@@ -25,7 +25,7 @@ int main()
             break;
         case 2:
             system("cls");
-            tree.generateRandomValues(10, 1, 9);
+            tree.generateRandomValues(10, 65, 90);
             break;
         default:
             system("cls");
@@ -37,9 +37,9 @@ int main()
 
     std::cout << "in-order traversal:"; tree.inOrderTraversal();
 
-    auto nodes = tree.getNodesInOrderUpToLevel2();
+    auto nodes = tree.getNodesFromSecondLevelToBottom();
     std::cout << "Nodes up to level 2 (in-order): ";
-    for (int val : nodes)
+    for (char val : nodes)
         std::cout << val << " ";
 
     std::cout << std::endl;
