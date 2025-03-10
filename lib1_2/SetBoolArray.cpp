@@ -2,7 +2,7 @@
 #include "Globals.h"
 
 
-SetBoolArray::SetBoolArray() { this->arr = new bool[11]; std::cout << "default constructor called" << std::endl; }
+SetBoolArray::SetBoolArray() { this->arr = new bool[11]; }
 
 SetBoolArray::SetBoolArray(const char input[])
 {
